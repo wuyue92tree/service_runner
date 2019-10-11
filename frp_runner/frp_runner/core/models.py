@@ -33,7 +33,7 @@ class ClientConfig(models.Model):
         auto_now=True, verbose_name=_('updateTime'))
 
     def __str__(self):
-        return self.client
+        return self.client.name
 
     class Meta:
         verbose_name = _('Client Config')
@@ -68,7 +68,7 @@ class ServerConfig(models.Model):
         auto_now=True, verbose_name=_('updateTime'))
 
     def __str__(self):
-        return self.server
+        return self.server.name
 
     class Meta:
         verbose_name = _('Server Config')
