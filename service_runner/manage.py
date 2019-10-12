@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
-from frp_runner.frp_runner.settings import CURRENT_DIR, BASE_DIR
+from service_runner.service_runner.settings import CURRENT_DIR, BASE_DIR
 import os
 import sys
 import shutil

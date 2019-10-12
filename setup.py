@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
-from frp_runner import version
+from service_runner import version
 
 setup(
-    name='frp_runner',
+    name='service_runner',
     version=version,
-    url='https://github.com/wuyue92tree/frp_runner',
-    description='frp manager',
+    url='https://github.com/wuyue92tree/service_runner',
+    description='service manager',
     long_description=open('README.rst').read(),
     author='wuyue',
     author_email='wuyue92tree@163.com',
@@ -19,7 +19,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     entry_points={
-        'console_scripts': ['frp_runner = frp_runner.manage:main']
+        'console_scripts': ['service_runner = service_runner.manage:main']
     },
     install_requires=[
         'Django==2.2.6',

@@ -1,4 +1,4 @@
-from frp_runner.frp_runner.settings import *
+from service_runner.service_runner.settings import *
 
 DEBUG = True
 
