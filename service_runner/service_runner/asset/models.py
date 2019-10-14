@@ -39,6 +39,11 @@ class Host(models.Model):
         ('WINDOWS', 'WINDOWS'),
         ('UNIX', 'UNIX')
     )
+    STATUS_CHOICE = (
+        (0, _('READY')),
+        (1, _('ONLINE')),
+        (2, _('OFFLINE')),
+    )
     ip = models.GenericIPAddressField(
         max_length=255, unique=True, verbose_name=_('ipAddress'))
     host_group = models.ForeignKey(
@@ -53,6 +58,9 @@ class Host(models.Model):
         max_length=255, choices=SYSTEM_TYPE_CHOICE, verbose_name=_('systemType'))
     description = models.TextField(
         blank=True, null=True, verbose_name=_('Description'))
+    status = models.IntegerField(
+        default=0, choices=STATUS_CHOICE, verbose_name=_('Status'))
+    valid = models.BooleanField(default=True, verbose_name=_('Valid'))
     create_time = models.DateTimeField(
         default=timezone.now, verbose_name=_('createTime'))
     update_time = models.DateTimeField(

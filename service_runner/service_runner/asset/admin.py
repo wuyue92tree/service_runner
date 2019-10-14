@@ -7,13 +7,20 @@ from .models import Host, HostGroup, SshKey
 
 @admin.register(Host)
 class HostAdmin(admin.ModelAdmin):
+    list_display = ('ip', 'host_group', 'ssh_user',
+                    'system_type', 'status', 'valid', 'update_time', 'create_time')
+    list_filter = ('status', 'valid', 'host_group', 'system_type')
+    list_editable = ('valid',)
+    search_fields = ('ip', 'description')
 
 
 @admin.register(SshKey)
 class SshKeyAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'ssh_key')
+    search_fields = ('name',)
 
 
 @admin.register(HostGroup)
 class HostGroupAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'description')
+    search_fields = ('name',)
