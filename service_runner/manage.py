@@ -12,6 +12,11 @@ def main():
     else:
         os.makedirs(CURRENT_DIR + '/log')
 
+    if os.path.exists(CURRENT_DIR + '/media'):
+        pass
+    else:
+        os.makedirs(CURRENT_DIR + '/media')
+
     if os.path.exists(CURRENT_DIR + '/custom_settings.py'):
         sys.path.append(CURRENT_DIR)
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'custom_settings')

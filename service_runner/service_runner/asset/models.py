@@ -19,6 +19,19 @@ class HostGroup(models.Model):
         verbose_name_plural = _('Host Groups')
 
 
+class SshKey(models.Model):
+    name = models.CharField(max_length=255, unique=True,
+                            verbose_name=_('Name'))
+    ssh_key = models.FileField(upload_to='./ssh_key', verbose_name=_('sshKey'))
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+    class Meta:
+        verbose_name = _('Ssh Key')
+        verbose_name_plural = _('Ssh Keys')
+
+
 class Host(models.Model):
     SYSTEM_TYPE_CHOICE = (
         ('LINUX', 'LINUX'),
@@ -33,7 +46,8 @@ class Host(models.Model):
     ssh_user = models.CharField(max_length=255, verbose_name=_('sshUser'))
     ssh_passwd = models.CharField(
         max_length=255, blank=True, null=True, verbose_name=_('sshPasswd'))
-    ssh_key = models.TextField(blank=True, null=True, verbose_name=_('sshKey'))
+    ssh_key = models.ForeignKey(
+        SshKey, on_delete=models.CASCADE, blank=True, null=True, verbose_name=_('sshKey'))
     ssh_port = models.IntegerField(default=22, verbose_name=_('sshPort'))
     system_type = models.CharField(
         max_length=255, choices=SYSTEM_TYPE_CHOICE, verbose_name=_('systemType'))

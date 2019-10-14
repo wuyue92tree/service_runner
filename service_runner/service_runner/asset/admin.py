@@ -1,12 +1,16 @@
 from django.contrib import admin
 from django import forms
 from django.db import models
-from .models import Host, HostGroup
+from .models import Host, HostGroup, SshKey
 # Register your models here.
 
 
 @admin.register(Host)
 class HostAdmin(admin.ModelAdmin):
+
+
+@admin.register(SshKey)
+class SshKeyAdmin(admin.ModelAdmin):
     pass
 
 

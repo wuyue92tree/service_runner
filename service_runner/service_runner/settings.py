@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'treebeard',
     'service_runner.service_runner.core',
+    'service_runner.service_runner.answeb',
     'service_runner.service_runner.asset',
     'service_runner.service_runner.service',
 ]
@@ -125,6 +126,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(CURRENT_DIR, 'static')
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(CURRENT_DIR, 'media')
 
 
 LOGGING = {

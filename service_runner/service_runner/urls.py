@@ -15,6 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls import url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.static import serve
 from django.views.generic import RedirectView
 
 
@@ -22,3 +26,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url='/admin/'))
 ]
+
+if settings.DEBUG:
+    urlpatterns = [
+        url(r'^media/(?P<path>.*)$', serve,
+            {'document_root': settings.MEDIA_ROOT,
+             'show_indexes': True}),
+    ] + staticfiles_urlpatterns() + urlpatterns
