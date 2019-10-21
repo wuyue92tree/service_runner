@@ -177,7 +177,7 @@ class AnsibleApi(object):
         self.variable_manager = VariableManager(
             loader=self.loader, inventory=self.inventory)
 
-    def run(self, host_list, module_name, module_args):
+    def run(self, host, module_name, module_args):
         """
         run module from ansible ad-hoc.
         module_name: ansible module_name
@@ -186,7 +186,7 @@ class AnsibleApi(object):
         # create play with tasks
         play_source = dict(
             name="Ansible Play",
-            hosts=host_list,
+            hosts=host,
             gather_facts='no',
             tasks=[dict(action=dict(module=module_name, args=module_args))]
         )
@@ -210,12 +210,18 @@ class AnsibleApi(object):
             if tqm is not None:
                 tqm.cleanup()
 
-    def run_playbook(self, playbooks):
+    def run_playbook(self, host, playbooks, **extra_vars):
         """
-        run ansible palybook
+        run ansible playbook
         """
         try:
             self.callback = ResultCallback()
+            _extra_vars = {}
+            _extra_vars['host'] = host
+            for k, v in extra_vars:
+                _extra_vars[k] = v
+            self.variable_manager.extra_vars = _extra_vars
+            print(self.variable_manager.extra_vars)
             executor = PlaybookExecutor(
                 playbooks=playbooks,
                 inventory=self.inventory,
@@ -232,7 +238,6 @@ class AnsibleApi(object):
     def get_result(self):
         self.results_raw = {'success': {}, 'failed': {}, 'unreachable': {}}
         for host, result in self.callback.host_ok.items():
-            print(host, result._result)
             self.results_raw['success'][host] = result._result
 
         for host, result in self.callback.host_failed.items():
@@ -243,16 +248,3 @@ class AnsibleApi(object):
             self.results_raw['unreachable'][host] = result._result['msg']
 
         return self.results_raw
-
-
-if __name__ == "__main__":
-    api = AnsibleApi('192.168.1.29,')
-    api.options = api.create_options(remote_user='wuyue')
-    # print(api.options)
-    api.passwords = dict(sshpass='monkey2016')
-    api.initializeData()
-    # api.run('192.168.1.29', 'command', 'uptime')
-    # print(api.get_result())
-    api.run_playbook(['./test.yml'])
-    api.get_result()
-    # print(json.dumps(api.get_result(), indent=4))
