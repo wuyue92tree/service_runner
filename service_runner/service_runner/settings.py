@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'treebeard',
+    'django_celery_beat',
     'service_runner.service_runner.core',
     'service_runner.service_runner.answeb',
     'service_runner.service_runner.asset',
-    'service_runner.service_runner.service',
+    # 'service_runner.service_runner.service',
 ]
 
 MIDDLEWARE = [
@@ -133,6 +134,12 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(CURRENT_DIR, 'media')
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+    os.path.join(BASE_DIR, 'third_party_app_trans/filer/locale'),
+    os.path.join(BASE_DIR, 'third_party_app_trans/django_celery_beat/locale'),
+)
+
 
 LOGGING = {
     'version': 1,
@@ -184,3 +191,27 @@ LOGGING = {
         }
     }
 }
+
+# celery config
+
+from kombu import Queue, Exchange
+
+# defined exchange
+default_exchange = Exchange('service_runner', type='direct')
+
+CELERY_QUEUES = (
+    Queue('service_runner', default_exchange,
+          routing_key='service_runner'),
+)
+# defined queue exchange routing_key
+CELERY_DEFAULT_QUEUE = 'service_runner'
+CELERY_DEFAULT_EXCHANGE = 'service_runner'
+CELERY_DEFAULT_ROUTING_KEY = 'service_runner'
+
+CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+
+from .celery_config import celery_app
