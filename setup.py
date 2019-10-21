@@ -23,6 +23,9 @@ setup(
     },
     install_requires=[
         'Django==2.2.6',
-        'django-adminlte-ui==1.4.0'
+        'django-adminlte-ui==1.4.0',
+        'ansible==2.7.13',
+        'paramiko==2.6.0',
+        'channels==2.3.0'
     ],
 )

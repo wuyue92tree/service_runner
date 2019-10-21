@@ -2,3 +2,5 @@ include MANIFEST.in
 include README.md
 include requirements.txt
 recursive-include service_runner/service_runner/core/locale *
+recursive-include service_runner/service_runner/answeb/playbooks *
+recursive-include service_runner/templates *
