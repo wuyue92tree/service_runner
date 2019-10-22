@@ -1,3 +1,3 @@
 # service_runner
 
-service manager
+service runner
