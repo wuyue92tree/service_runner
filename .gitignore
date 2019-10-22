@@ -1,0 +1,10 @@
+*.pyc
+*.sqlite3
+.idea
+__pycache__
+build/*
+dist/*
+log/*
+.vscode/*
+.python-version
+*.egg-info/*

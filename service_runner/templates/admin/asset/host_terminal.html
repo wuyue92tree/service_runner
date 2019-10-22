@@ -1,0 +1,179 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static "admin/css/xterm.min.css" %}">
+{% endblock %}
+
+{% block title %} {% trans "Terminal Control" %} {% endblock %}
+
+{% block content %}
+{% if object %}
+  <div class="col-md-12" id="terminal_content">
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#tab_1" data-toggle="tab" aria-expanded="true">
+            <i v-if="ws" class="fa fa-terminal text-green"></i>
+            <i v-else class="fa fa-terminal text-red"></i>
+             {{object.ssh_user}}@{{object.ip}}
+          </a>
+        </li>
+        <li class="pull-right">
+        <a class="dropdown-toggle text-muted" data-toggle="dropdown" href="#"><i class="fa fa-gear"></i></a>
+          <ul class="dropdown-menu">
+            <li role="presentation" v-if="ws"><a role="menuitem" tabindex="-1" @click="disconnectWebSocket()">{% trans "Disconnect" %}</a></li>
+            <li role="presentation" v-else><a role="menuitem" tabindex="-1" @click="connectWebSocket({{object.id}})">{% trans "Reconnect" %}</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" v-if="isFullScreen==false"><a role="menuitem" tabindex="-1" @click="fullScreen()">{% trans "FullScreen" %}</a></li>
+            <li role="presentation" v-else><a role="menuitem" tabindex="-1" @click="exitFullscreen()">{% trans "ExitFullScreen" %}</a></li>
+          </ul>
+          </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab_1">
+          <div id="terminal" style="border: 5px solid black;"></div>
+        </div>
+        <!-- /.tab-pane -->
+      </div>
+      <!-- /.tab-content -->
+    </div>
+  </div>
+{% else %}
+{% trans "params not enough." %}
+{% endif %}
+{% endblock content %}
+
+{% block extrajs %}
+<script src="{% static "admin/js/xterm.min.js" %}"></script>
+<script src="{% static "admin/js/vue.min.js" %}"></script>
+<script>
+  new Vue({
+    el: '#terminal_content',
+    data: {
+      term: '',
+      ws: '',
+      isFullScreen: false
+    },
+    methods: {
+      get_box_size() {
+        let init_width = 9;
+        let init_height = 22;
+
+        let windows_width = $('#tab_1').width();
+        let windows_height = $(window).height();
+
+        return {
+          cols: Math.floor(windows_width / init_width),
+          rows: Math.floor(windows_height / init_height),
+        }
+      },
+      connectWebSocket(host_id, team=false) {
+        let self = this
+        let cols = this.get_box_size().cols;
+        let rows = this.get_box_size().rows;
+        console.log(cols, rows);
+        this.term = new Terminal({
+          cols: cols,
+          rows: rows,
+          useStyle: true,
+          cursorBlink: true
+        })
+        let ssh_args = ``
+        let ws_scheme = window.location.protocol === "https:" ? "wss" : "ws"; //获取协议
+        let ws_port = (window.location.port) ? (':' + window.location.port) : '';  // 获取端口
+        this.ws = new WebSocket(ws_scheme + '://' + window.location.hostname + ws_port + '/ws/webssh/{{object.id}}/?' + ssh_args + `&width=${cols}&height=${rows}`);
+        //打开websocket连接，并打开终端
+        this.ws.onopen = function () {
+            console.log('WebSocket建立连接，打开Web终端');
+            $('#terminal').empty()
+            self.term.open(document.getElementById('terminal'));
+        };
+        this.ws.onclose = function (e) {
+            console.error('WebSocket关闭连接，关闭Web终端');
+            //toastr.success('SSH连接已关闭', '消息');
+            self.term.write('\nsession closed.')
+            self.ws = ''
+        };
+
+        //读取服务器发送的数据并写入web终端
+        this.ws.onmessage = function (e) {
+            console.log('WebSocket接收消息，ssh交互中');
+            let data = JSON.parse(e.data);
+            console.log(data);
+            let message = data['message'];
+            if (data.flag === 'msg') {
+                self.term.write(message);
+            } else if (data.flag === 'fail') {
+                self.term.write(message);  //连接ssh的异常提示
+                //toastr.error(message + "返回登录页", '失败');
+                setTimeout(function () {
+                    window.location.reload();
+                }, 5000);
+            } else if (data.flag === 'user') {
+                toastr.info(message, '消息');
+            } else if (data.flag === 'error') {
+                toastr.error(message, '失败');
+                //term.write(message);
+                setTimeout(function () {
+                    window.location.reload();
+                }, 5000);
+
+            }
+
+        };
+        //向服务器发送数据,flag=1
+        this.term.on('data', function (data) {
+            //data为每个按键输入内容，例如按A，就传递给后端：{'flag': 1, 'data': 'a', 'cols': None, 'rows': None}
+            let send_data = JSON.stringify({
+                'flag': 'entered_key',
+                'entered_key': data,
+                'cols': null,
+                'rows': null
+            });
+            //向WebSocket发送消息，也就是输入的每一个按键
+            self.ws.send(send_data)
+        })
+      },
+      disconnectWebSocket () {
+        console.log(this.ws)
+        this.ws.close();
+      },
+      fullScreen() {
+        var element = document.getElementById('terminal_content');
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        }
+        this.isFullScreen = true
+      },
+      exitFullscreen() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+        this.isFullScreen = false
+      }
+    },
+    mounted () {
+      {% if object %}
+      this.connectWebSocket({{ object.id }})
+      {% endif %}
+      console.log(this)
+    }
+  })
+
+</script>
+
+{% endblock %}
