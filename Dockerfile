@@ -1,4 +1,4 @@
-FROM python3-app:with_nginx
+FROM wuyue/python3-app:with_nginx
 LABEL maintainer="wuyue92tree@163.com"
 
 COPY . /data/src
