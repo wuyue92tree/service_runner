@@ -33,7 +33,7 @@
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab_1">
-          <div id="terminal" style="border: 5px solid black;"></div>
+          <div id="terminal"></div>
         </div>
         <!-- /.tab-pane -->
       </div>
@@ -134,6 +134,15 @@
             });
             //向WebSocket发送消息，也就是输入的每一个按键
             self.ws.send(send_data)
+        })
+
+        $(window).resize(function () {
+          let cols = self.get_box_size().cols; 
+          let rows = self.get_box_size().rows; 
+          console.log(`更改显示终端窗口大小，行${rows}列${cols}`); 
+          let send_data = JSON.stringify({'flag': 'resize', 'cols': cols, 'rows': rows}); 
+          self.ws.send(send_data); 
+          self.term.resize(cols, rows) //调整页面终端大小
         })
       },
       disconnectWebSocket () {
