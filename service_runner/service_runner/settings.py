@@ -87,7 +87,7 @@ ASGI_APPLICATION = "service_runner.service_runner.routing.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(CURRENT_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(CURRENT_DIR, 'db/db.sqlite3'),
     }
 }
 
