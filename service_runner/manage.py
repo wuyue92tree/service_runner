@@ -7,15 +7,11 @@ import shutil
 
 
 def main():
-    if os.path.exists(CURRENT_DIR + '/log'):
-        pass
-    else:
-        os.makedirs(CURRENT_DIR + '/log')
-
-    if os.path.exists(CURRENT_DIR + '/media'):
-        pass
-    else:
-        os.makedirs(CURRENT_DIR + '/media')
+    for _dir in ('/log', '/media', '/db'):
+        if os.path.exists(CURRENT_DIR + _dir):
+            pass
+        else:
+            os.makedirs(CURRENT_DIR + _dir)
 
     if os.path.exists(CURRENT_DIR + '/custom_settings.py'):
         sys.path.append(CURRENT_DIR)
