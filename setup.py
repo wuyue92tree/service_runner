@@ -29,6 +29,8 @@ setup(
         'channels==2.3.0',
         'kombu==4.6.5',
         'celery==4.3.0',
-        'django-celery-beat==1.5.0'
+        'django-celery-beat==1.5.0',
+        'redis==3.3.11',
+        'uwsgi==2.0.18'
     ],
 )
