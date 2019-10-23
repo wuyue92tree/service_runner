@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+from .celery_config import celery_app
+from kombu import Queue, Exchange
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -136,8 +138,8 @@ MEDIA_ROOT = os.path.join(CURRENT_DIR, 'media')
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
-    os.path.join(BASE_DIR, 'third_party_app_trans/filer/locale'),
-    os.path.join(BASE_DIR, 'third_party_app_trans/django_celery_beat/locale'),
+    os.path.join(BASE_DIR, 'third_part_app_trans/filer/locale'),
+    os.path.join(BASE_DIR, 'third_part_app_trans/django_celery_beat/locale'),
 )
 
 
@@ -194,7 +196,6 @@ LOGGING = {
 
 # celery config
 
-from kombu import Queue, Exchange
 
 # defined exchange
 default_exchange = Exchange('service_runner', type='direct')
@@ -213,5 +214,3 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
-
-from .celery_config import celery_app

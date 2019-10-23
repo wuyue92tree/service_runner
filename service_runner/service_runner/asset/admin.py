@@ -8,6 +8,7 @@ from django.core import serializers
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 from .models import Host, HostGroup, SshKey
 from .utils import get_host_uptime, get_host_info
 # Register your models here.
@@ -17,7 +18,7 @@ from .utils import get_host_uptime, get_host_info
 class HostAdmin(admin.ModelAdmin):
     list_display = ('ip', 'host_group', 'ssh_user',
                     'system_type', 'display_status', 'valid', 'update_time', 'create_time', 'display_options')
-    list_filter = ('status', 'valid', 'host_group__name', 'system_type')
+    list_filter = ('status', 'valid', 'system_type')
     list_editable = ('valid',)
     search_fields = ('ip', 'description')
     change_list_template = 'admin/asset/host_change_list.html'
@@ -49,10 +50,14 @@ class HostAdmin(admin.ModelAdmin):
         )
         return format_html(callback_html)
 
+    display_status.short_description = _('Status')
+
     def display_options(self, obj):
         return format_html('''
-        <a target="_blank" href='/admin/asset/host/terminal/?host_id={host_id}'>Open terminal</a>
-        '''.format(host_id=obj.id))
+        <a target="_blank" href='/admin/asset/host/terminal/?host_id={host_id}'>{words}</a>
+        '''.format(host_id=obj.id, words=_('Open terminal')))
+
+    display_options.short_description = _('Options')
 
     def get_host_uptime_view(self, request):
         host_id = request.GET.get('host_id')
