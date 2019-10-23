@@ -138,8 +138,8 @@ MEDIA_ROOT = os.path.join(CURRENT_DIR, 'media')
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
-    os.path.join(BASE_DIR, 'third_party_app_trans/filer/locale'),
-    os.path.join(BASE_DIR, 'third_party_app_trans/django_celery_beat/locale'),
+    os.path.join(BASE_DIR, 'third_part_app_trans/filer/locale'),
+    os.path.join(BASE_DIR, 'third_part_app_trans/django_celery_beat/locale'),
 )
 
 

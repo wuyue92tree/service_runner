@@ -5,4 +5,4 @@ recursive-include service_runner/locale *
 recursive-include service_runner/service_runner/core/static *
 recursive-include service_runner/service_runner/answeb/playbooks *
 recursive-include service_runner/templates *
-recursive-include service_runner/third_party_app_trans *
+recursive-include service_runner/third_part_app_trans *

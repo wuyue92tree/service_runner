@@ -1,0 +1,417 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-23 10:48+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin.py:71
+msgid "Task (registered)"
+msgstr "任务 (已注册)"
+
+#: admin.py:75
+msgid "Task (custom)"
+msgstr "任务 (自定义)"
+
+#: admin.py:92
+msgid "Need name of task"
+msgstr "任务名称是必须的"
+
+#: admin.py:103
+#, python-format
+msgid "Unable to parse JSON: %s"
+msgstr "无法解析JSON: %s"
+
+#: admin.py:165
+#, python-brace-format
+msgid "{0} task{1} {2} successfully {3}"
+msgstr "{0} 任务{1} {2} 成功 {3}"
+
+#: admin.py:168 admin.py:230
+msgid "was,were"
+msgstr ""
+
+#: admin.py:177
+msgid "Enable selected tasks"
+msgstr "启用被选中任务"
+
+#: admin.py:183
+msgid "Disable selected tasks"
+msgstr "禁用被选中任务"
+
+#: admin.py:195
+msgid "Toggle activity of selected tasks"
+msgstr "切换被选中任务的状态"
+
+#: admin.py:215
+#, python-brace-format
+msgid "task \"{0}\" not found"
+msgstr "任务 \"{0}\" 不存在"
+
+#: admin.py:227
+#, python-brace-format
+msgid "{0} task{1} {2} successfully run"
+msgstr "{0} 任务{1} {2} 执行成功"
+
+#: admin.py:233
+msgid "Run selected tasks"
+msgstr "执行被选中任务"
+
+#: apps.py:15
+msgid "Periodic Tasks"
+msgstr "任务调度中心"
+
+#: models.py:29
+msgid "Days"
+msgstr "日"
+
+#: models.py:30
+msgid "Hours"
+msgstr "时"
+
+#: models.py:31
+msgid "Minutes"
+msgstr "分"
+
+#: models.py:32
+msgid "Seconds"
+msgstr "秒"
+
+#: models.py:33
+msgid "Microseconds"
+msgstr "微秒"
+
+#: models.py:54
+msgid "Solar Event"
+msgstr "太阳活动"
+
+#: models.py:55
+msgid "The type of solar event when the job should run"
+msgstr "设置任务执行时，太阳活动的类型"
+
+#: models.py:59
+msgid "Latitude"
+msgstr "纬度"
+
+#: models.py:60
+msgid "Run the task when the event happens at this latitude"
+msgstr "当太阳活动在当前纬度发生时执行任务"
+
+#: models.py:65
+msgid "Longitude"
+msgstr "经度"
+
+#: models.py:66
+msgid "Run the task when the event happens at this longitude"
+msgstr "当太阳活动在当前经度发生时执行任务"
+
+#: models.py:73
+msgid "solar event"
+msgstr "太阳活动"
+
+#: models.py:74
+msgid "solar events"
+msgstr "太阳活动管理"
+
+#: models.py:124
+msgid "Number of Periods"
+msgstr "时间间隔值"
+
+#: models.py:125
+msgid "Number of interval periods to wait before running the task again"
+msgstr "与时间间隔单位相匹配的间隔值设置"
+
+#: models.py:131
+msgid "Interval Period"
+msgstr "时间间隔单位"
+
+#: models.py:132
+msgid "The type of period between task runs (Example: days)"
+msgstr "任务执行的时间间隔单位设置 (示例： days)"
+
+#: models.py:138
+msgid "interval"
+msgstr "时间间隔"
+
+#: models.py:139
+msgid "intervals"
+msgstr "时间间隔管理"
+
+#: models.py:162
+#, python-brace-format
+msgid "every {0.period_singular}"
+msgstr ""
+
+#: models.py:163
+#, python-brace-format
+msgid "every {0.every} {0.period}"
+msgstr ""
+
+#: models.py:175
+msgid "Clock Time"
+msgstr "时钟时间"
+
+#: models.py:176
+msgid "Run the task at clocked time"
+msgstr "在时钟设置的时间运行任务"
+
+#: models.py:181 models.py:475
+msgid "Enabled"
+msgstr "启用"
+
+#: models.py:182 models.py:476
+msgid "Set to False to disable the schedule"
+msgstr "设置为False以禁用调度"
+
+#: models.py:188 models.py:189
+msgid "clocked"
+msgstr "时钟管理"
+
+#: models.py:232
+msgid "Minute(s)"
+msgstr "分钟"
+
+#: models.py:234
+msgid "Cron Minutes to Run. Use \"*\" for \"all\". (Example: \"0,30\")"
+msgstr "Crontab分钟设置。使用 \"*\" 表示所有. (示例: \"0,30\")"
+
+#: models.py:239
+msgid "Hour(s)"
+msgstr "小时"
+
+#: models.py:241
+msgid "Cron Hours to Run. Use \"*\" for \"all\". (Example: \"8,20\")"
+msgstr "Crontab小时设置。使用 \"*\" 表示所有. (示例: \"8,20\")"
+
+#: models.py:246
+msgid "Day(s) Of The Week"
+msgstr "当前周的日期"
+
+#: models.py:248
+msgid "Cron Days Of The Week to Run. Use \"*\" for \"all\". (Example: \"0,5\")"
+msgstr "Crontab当前周的日期设置。使用 \"*\" 表示所有. (示例: \"0,5\")"
+
+#: models.py:254
+msgid "Day(s) Of The Month"
+msgstr "当前月的日期"
+
+#: models.py:256
+msgid ""
+"Cron Days Of The Month to Run. Use \"*\" for \"all\". (Example: \"1,15\")"
+msgstr "Crontab当前月的日期设置。使用 \"*\" 表示所有. (示例: \"1,15\")"
+
+#: models.py:262
+msgid "Month(s) Of The Year"
+msgstr "当前年的月份"
+
+#: models.py:264
+msgid ""
+"Cron Months Of The Year to Run. Use \"*\" for \"all\". (Example: \"0,6\")"
+msgstr "Crontab当前年的月份设置。使用 \"*\" 表示所有. (示例: \"0,6\")"
+
+#: models.py:271
+msgid "Cron Timezone"
+msgstr "Crontab时区"
+
+#: models.py:273
+msgid "Timezone to Run the Cron Schedule on.  Default is UTC."
+msgstr "执行Crontab调度的时区设置。默认为 UTC。"
+
+#: models.py:279
+msgid "crontab"
+msgstr ""
+
+#: models.py:280
+msgid "crontabs"
+msgstr "crontab管理"
+
+#: models.py:366
+msgid "Name"
+msgstr "名称"
+
+#: models.py:367
+msgid "Short Description For This Task"
+msgstr "任务概述"
+
+#: models.py:372
+msgid ""
+"The Name of the Celery Task that Should be Run.  (Example: \"proj.tasks."
+"import_contacts\")"
+msgstr ""
+
+#: models.py:380
+msgid "Interval Schedule"
+msgstr "时间间隔调度"
+
+#: models.py:381
+msgid ""
+"Interval Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr "使用时间间隔调度执行任务。设置唯一的调度类型，保持其他调度类型为空。"
+
+#: models.py:386
+msgid "Crontab Schedule"
+msgstr "Crontab调度"
+
+#: models.py:387
+msgid ""
+"Crontab Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr "使用Crontab调度执行任务。设置唯一的调度类型，保持其他调度类型为空。"
+
+#: models.py:392
+msgid "Solar Schedule"
+msgstr "太阳活动调度"
+
+#: models.py:393
+msgid ""
+"Solar Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr "使用太阳活动调度执行任务。设置唯一的调度类型，保持其他调度类型为空。"
+
+#: models.py:398
+msgid "Clocked Schedule"
+msgstr "时钟调度"
+
+#: models.py:399
+msgid ""
+"Clocked Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr "使用时钟调度执行任务。设置唯一的调度类型，保持其他调度类型为空。"
+
+#: models.py:405
+msgid "Positional Arguments"
+msgstr "位置参数"
+
+#: models.py:407
+msgid "JSON encoded positional arguments (Example: [\"arg1\", \"arg2\"])"
+msgstr "JSON编码的位置参数，必须保证传参顺序 (示例：[\"arg1\", \"arg2\"])"
+
+#: models.py:412
+msgid "Keyword Arguments"
+msgstr "关键词参数"
+
+#: models.py:414
+msgid "JSON encoded keyword arguments (Example: {\"argument\": \"value\"})"
+msgstr "JSON编码的关键词参数 (示例：{\"argument\": \"value\"})"
+
+#: models.py:420
+msgid "Queue Override"
+msgstr "队列覆盖"
+
+#: models.py:422
+msgid "Queue defined in CELERY_TASK_QUEUES. Leave None for default queuing."
+msgstr "指定CELERY_TASK_QUEUES，留空时使用默认队列"
+
+#: models.py:431
+msgid "Exchange"
+msgstr ""
+
+#: models.py:432
+msgid "Override Exchange for low-level AMQP routing"
+msgstr "覆盖低级别AMQP路由Exchange"
+
+#: models.py:436
+msgid "Routing Key"
+msgstr ""
+
+#: models.py:437
+msgid "Override Routing Key for low-level AMQP routing"
+msgstr "覆盖低级别AMQP路由Routing Key"
+
+#: models.py:441
+msgid "AMQP Message Headers"
+msgstr "AMQP消息头"
+
+#: models.py:442
+msgid "JSON encoded message headers for the AMQP message."
+msgstr "AMQP消息的JSON编码消息头"
+
+#: models.py:448
+msgid "Priority"
+msgstr "优先级"
+
+#: models.py:450
+msgid ""
+"Priority Number between 0 and 255. Supported by: RabbitMQ, Redis (priority "
+"reversed, 0 is highest)."
+msgstr "优先级介于0到255之间。支持：RabbitMQ, Redis (优先级是越小越优先，0的优先级最高))"
+
+#: models.py:455
+msgid "Expires Datetime"
+msgstr "过期时间"
+
+#: models.py:457
+msgid ""
+"Datetime after which the schedule will no longer trigger the task to run"
+msgstr "过了设置的时间后，该任务将不再被调度执行"
+
+#: models.py:462
+msgid "One-off Task"
+msgstr "一次性任务"
+
+#: models.py:464
+msgid "If True, the schedule will only run the task a single time"
+msgstr "若为True，该任务将只被调度一次"
+
+#: models.py:468
+msgid "Start Datetime"
+msgstr "开始时间"
+
+#: models.py:470
+msgid "Datetime when the schedule should begin triggering the task to run"
+msgstr "该任务开始调度的时间"
+
+#: models.py:481
+msgid "Last Run Datetime"
+msgstr "最后一次执行时间"
+
+#: models.py:483
+msgid ""
+"Datetime that the schedule last triggered the task to run. Reset to None if "
+"enabled is set to False."
+msgstr "该任务最后被调度的时间。若enabled被设置为False，改时间将被重置为None"
+
+#: models.py:488
+msgid "Total Run Count"
+msgstr "总执行次数"
+
+#: models.py:490
+msgid "Running count of how many times the schedule has triggered the task"
+msgstr "该任务已被触发调度次数"
+
+#: models.py:495
+msgid "Last Modified"
+msgstr "最后修改时间"
+
+#: models.py:496
+msgid "Datetime that this PeriodicTask was last modified"
+msgstr "定时任务最后修改时间"
+
+#: models.py:500
+msgid "Description"
+msgstr "描述"
+
+#: models.py:502
+msgid "Detailed description about the details of this Periodic Task"
+msgstr "定时任务描述"
+
+#: models.py:511
+msgid "periodic task"
+msgstr "定时任务"
+
+#: models.py:512
+msgid "periodic tasks"
+msgstr "定时任务管理"
