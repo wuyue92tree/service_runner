@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-23 09:55+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: service_runner/asset/admin.py:53 service_runner/asset/models.py:62
+msgid "Status"
+msgstr ""
+
+#: service_runner/asset/admin.py:58
+msgid "Open terminal"
+msgstr ""
+
+#: service_runner/asset/admin.py:60
+msgid "Options"
+msgstr ""
+
+#: service_runner/asset/apps.py:8
+msgid "Asset"
+msgstr ""
+
+#: service_runner/asset/models.py:10 service_runner/asset/models.py:24
+#: service_runner/service/models.py:12 service_runner/service/models.py:26
+msgid "Name"
+msgstr ""
+
+#: service_runner/asset/models.py:12 service_runner/asset/models.py:60
+#: service_runner/service/models.py:14
+msgid "Description"
+msgstr ""
+
+#: service_runner/asset/models.py:18
+msgid "Host Group"
+msgstr ""
+
+#: service_runner/asset/models.py:19
+msgid "Host Groups"
+msgstr ""
+
+#: service_runner/asset/models.py:25 service_runner/asset/models.py:55
+msgid "sshKey"
+msgstr ""
+
+#: service_runner/asset/models.py:31
+msgid "Ssh Key"
+msgstr ""
+
+#: service_runner/asset/models.py:32
+msgid "Ssh Keys"
+msgstr ""
+
+#: service_runner/asset/models.py:43
+msgid "READY"
+msgstr ""
+
+#: service_runner/asset/models.py:44
+msgid "ONLINE"
+msgstr ""
+
+#: service_runner/asset/models.py:45
+msgid "OFFLINE"
+msgstr ""
+
+#: service_runner/asset/models.py:48
+msgid "ipAddress"
+msgstr ""
+
+#: service_runner/asset/models.py:50
+msgid "hostGroup"
+msgstr ""
+
+#: service_runner/asset/models.py:51
+msgid "sshUser"
+msgstr ""
+
+#: service_runner/asset/models.py:53
+msgid "sshPasswd"
+msgstr ""
+
+#: service_runner/asset/models.py:56
+msgid "sshPort"
+msgstr ""
+
+#: service_runner/asset/models.py:58
+msgid "systemType"
+msgstr ""
+
+#: service_runner/asset/models.py:63
+msgid "Valid"
+msgstr ""
+
+#: service_runner/asset/models.py:65 service_runner/service/models.py:29
+#: service_runner/service/models.py:53
+msgid "createTime"
+msgstr ""
+
+#: service_runner/asset/models.py:67 service_runner/service/models.py:31
+#: service_runner/service/models.py:55
+msgid "updateTime"
+msgstr ""
+
+#: service_runner/asset/models.py:73 service_runner/service/models.py:44
+msgid "Host"
+msgstr ""
+
+#: service_runner/asset/models.py:74
+msgid "Hosts"
+msgstr ""
+
+#: service_runner/service/apps.py:8 service_runner/service/models.py:62
+msgid "Service"
+msgstr ""
+
+#: service_runner/service/models.py:20
+msgid "Service Type"
+msgstr ""
+
+#: service_runner/service/models.py:21
+msgid "Service Types"
+msgstr ""
+
+#: service_runner/service/models.py:27
+msgid "Content"
+msgstr ""
+
+#: service_runner/service/models.py:38
+msgid "Service Config"
+msgstr ""
+
+#: service_runner/service/models.py:39
+msgid "Service Configs"
+msgstr ""
+
+#: service_runner/service/models.py:46
+msgid "serviceType"
+msgstr ""
+
+#: service_runner/service/models.py:49
+msgid "serviceConfig"
+msgstr ""
+
+#: service_runner/service/models.py:51
+msgid "Port"
+msgstr ""
+
+#: service_runner/service/models.py:63
+msgid "Services"
+msgstr ""
+
+#: templates/admin/asset/host_change_list.html:28
+msgid "Home"
+msgstr ""
+
+#: templates/admin/asset/host_change_list.html:55
+msgid "Please correct the error below."
+msgstr ""
+
+#: templates/admin/asset/host_change_list.html:55
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/admin/asset/host_terminal.html:9
+msgid "Terminal Control"
+msgstr "终端控制"
+
+#: templates/admin/asset/host_terminal.html:26
+msgid "Disconnect"
+msgstr "断开连接"
+
+#: templates/admin/asset/host_terminal.html:27
+msgid "Reconnect"
+msgstr "重新连接"
+
+#: templates/admin/asset/host_terminal.html:29
+msgid "FullScreen"
+msgstr "全屏显示"
+
+#: templates/admin/asset/host_terminal.html:30
+msgid "ExitFullScreen"
+msgstr "退出全屏"
+
+#: templates/admin/asset/host_terminal.html:44
+msgid "params not enough."
+msgstr "参数不足"
