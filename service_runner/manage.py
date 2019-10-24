@@ -6,12 +6,12 @@ import sys
 import shutil
 
 
-def main():
-    for _dir in ('/log', '/media', '/db'):
-        if os.path.exists(CURRENT_DIR + _dir):
+def prepare():
+    for _dir in ('log', 'media', 'db'):
+        if os.path.exists(os.path.join(CURRENT_DIR, _dir)):
             pass
         else:
-            os.makedirs(CURRENT_DIR + _dir)
+            os.makedirs(os.path.join(CURRENT_DIR, _dir))
 
     if os.path.exists(CURRENT_DIR + '/custom_settings.py'):
         sys.path.append(CURRENT_DIR)
@@ -22,6 +22,8 @@ def main():
         sys.path.append(CURRENT_DIR)
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'custom_settings')
 
+
+def main():
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

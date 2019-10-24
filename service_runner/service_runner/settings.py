@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'service_runner.service_runner.core',
     'service_runner.service_runner.answeb',
     'service_runner.service_runner.asset',
-    'service_runner.service_runner.service',
+    # 'service_runner.service_runner.service',
 ]
 
 MIDDLEWARE = [
