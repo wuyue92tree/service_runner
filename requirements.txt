@@ -1,4 +1,4 @@
-Django==2.2.6
+Django==2.2.13
 django-adminlte-ui==1.4.0
 ansible==2.7.13
 paramiko==2.6.0
