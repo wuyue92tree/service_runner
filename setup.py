@@ -22,7 +22,7 @@ setup(
         'console_scripts': ['service_runner = service_runner.manage:main']
     },
     install_requires=[
-        'Django==2.2.6',
+        'Django==2.2.28',
         'django-adminlte-ui==1.4.0',
         'ansible==2.7.13',
         'paramiko==2.6.0',
